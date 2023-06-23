@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMI Calculator</title>
+    <style>
+   @import url('https://fonts.googleapis.com/css2?family=SF+Pro&display=swap');
+
+    body {
+        background-color: #f2f2f2;
+        }
+        body {
+        font-family: 'SF Pro', sans-serif;
+    }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }'
+
+    </style>
+</head>
+<body>
+    <h1>Calculate your EMI</h1>
+    <form>
+        <div>
+            <label for="loan-amount">Loan Amount:</label>
+            <input type="number" id="loan-amount" placeholder="Enter loan amount" required>
+        </div>
+        <div>
+            <label for="interest-rate">Interest Rate:</label>
+            <input type="number" id="interest-rate" placeholder="Enter interest rate" required>
+        </div>
+        <div>
+            <label for="loan-term">Loan Term (in months):</label>
+            <input type="number" id="loan-term" placeholder="Enter loan term in months" required>
+        </div>
+        <div>
+            <button type="button" onclick="calculateEMI()">Calculate EMI</button>
+        </div>
+        <div>
+            <label for="emi-result">Your EMI (in months):</label>
+            <input type="number" id="emi-result" readonly>
+        </div>
+    </form>
+    <script>
+        function calculateEMI() {
+            let loanAmount = document.getElementById("loan-amount").value;
+            let interestRate = document.getElementById("interest-rate").value;
+            let loanTerm = document.getElementById("loan-term").value;
+            let emiResult = document.getElementById("emi-result");
+
+            let monthlyInterestRate = interestRate / 1200;
+            let emi = loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTerm) / (Math.pow(1 + monthlyInterestRate, loanTerm) - 1);
+            emiResult.value = emi.toFixed(2);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up Page</title>
+	<meta charset="UTF-8">
+	<style>
+	    @import url('https://fonts.googleapis.com/css2?family=SF+Pro&display=swap');
+		body {
+			background-color: #f2f2f2;
+        font-family: 'SF Pro', sans-serif;
+
+		}
+		.error-message {
+            color: red;
+        }
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+		}
+
+		input[type="text"], input[type="email"], input[type="password"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+body {
+  background-image: url("https://w0.peakpx.com/wallpaper/995/49/HD-wallpaper-blur-background-blur-simple-background-background.jpg");
+  background-size: cover;
+}
+
+		.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  text-decoration: none;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn:focus, .btn.focus {
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5);
+  outline: 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5);
+  outline: 0;
+}
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.info {
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+.warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+/* Add animation styles for fade-out effect */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 3s ease-out forwards;
+}
+	</style>
+</head>
+<body>
+	<h1 style="color: white;">Sign Up</h1>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li style="color: red;" class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+	<form action="" method="post">
+		{% csrf_token %}
+
+		<label for="fname">First name:</label>
+  		<input type="text" id="fname" name="fname" required>
+
+  		<label for="lname">Last name:</label>
+  		<input type="text" id="lname" name="lname" required>
+
+		<label for="username">User Name:</label>
+		<input type="text" id="username" name="username" required>
+
+		<label for="email">Email Address:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+
+		<label for="password_confirm">Re-enter Password:</label>
+		<input type="password" id="password_confirm" name="password_confirm" required>
+
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+
+            <p>Already a member? <a href="/Login">Log In</a></p>
+
+	</form>
+</body>
+</html>

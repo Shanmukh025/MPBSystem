@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>Title</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=SF+Pro&display=swap');
+
+    body {
+        background-color: #f2f2f2;
+        }
+        body {
+        font-family: 'SF Pro', sans-serif;
+    }
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+
+        .error-message {
+            color: red;
+        }
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+		}
+
+		input[type="text"], input[type="password"] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
+		button:hover {
+			background-color: #45a049;
+		}
+		.btn-primary {
+    background-color: green !important;
+    form {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+}
+        body {
+            background-image: url('https://w0.peakpx.com/wallpaper/995/49/HD-wallpaper-blur-background-blur-simple-background-background.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.info {
+    background-color: #d9edf7;
+    color: #31708f;
+}
+
+.warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+/* Add animation styles for fade-out effect */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 3s ease-out forwards;
+}
+    </style>
+</head>
+<body>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li style="color: red; " class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+	<h1 style="color: white;">Log In</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+        <form action=" " method="post">
+            {% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" placeholder="Enter Username" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="checkbox1">
+            <label class="form-check-label" for="checkbox1">Remember me</label>
+        </div>
+      <button class="btn btn-primary" type="submit">Log In</button>
+            <p>Not a member yet? <a href="/Signup">Sign Up</a></p>
+    </form>
+</body>
+</html>

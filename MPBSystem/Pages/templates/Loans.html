@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>Apply Loan</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=SF+Pro&display=swap');
+
+    body {
+        font-family: 'SF Pro', sans-serif;
+    }
+    body {
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  padding-top: 10%;
+}
+.web-grip {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-around;
+}
+.grid > *:hover {
+  box-shadow: 2px 3px 2px 3px black;
+  width: 350px;
+  height: 500px;
+}
+.grid > * {
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  height: 450px;
+  border: 3px solid black;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin: 5%;
+  transition: width 1s,height 1s;
+}
+    footer {
+  background-color: #f8f8f8;
+  padding: 30px 0;
+}
+
+footer h4 {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+footer p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer ul li a {
+  color: #666;
+}
+
+footer ul li a:hover {
+  color: #333;
+}
+
+footer ul.social li a {
+  color: #666;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+footer ul.social li a:hover:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-color: #666;
+  opacity: 0.5;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+footer ul.social li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+
+
+footer hr {
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+footer p.text-center {
+  color: #666;
+  font-size: 14px;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  color: #f8f8f8;
+}
+
+.social li a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.social li a:hover {
+  color: #f8f8f8;
+}
+.row{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+      <img src="https://t3.ftcdn.net/jpg/05/08/62/94/360_F_508629488_ZMpRYq2RA53ARK0RVoElruFdTNHVU8iv.jpg" alt="Logo" width="25" height="20" class="d-inline-block align-text-top">
+      MPB System
+    </a>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/Loans">Loans</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/PawnBrokerism">Pawn Brokerism</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="/MyPayments">Payments</a>
+      </li>
+           <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Resources
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/Refinance">Refinance</a></li>
+            <li><a class="dropdown-item" href="/EMICalculator">EMI Calculator</a></li>
+            <li><a class="dropdown-item" href="/Licensing">Licensing</a></li>
+          </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/AboutUs">About Us</a>
+      </li>
+    </ul>
+      {% if user.is_superuser %}
+    <a class="btn btn-danger" href="/adminpanel" role="button">ADMIN PANEL</a>
+            {% endif %}
+      {% if user.is_authenticated %}
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a class="btn btn-primary" href="/Profile" role="button">Profile</a>
+      <a class="btn btn-success" href="/Logout" role="button">Log Out</a>
+      {% else %}
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a class="btn btn-success" href="/Login" role="button">Log In</a>
+    <a class="btn btn-primary" href="/Signup" role="button">Sign Up</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+<div class="card text-center mb-3" style="width: 18rem;">
+  <img src="https://5.imimg.com/data5/DC/GU/LA/SELLER-93872086/buisness-loan-500x500.jpg" class="card-img-top">
+  <div class="card-body">
+    <b class="card-title">Personal Loan</b>
+    <p class="card-text">A Personal loan allows you to borrow money to pay for personal expenses and then repay those funds over time. Personal loans are type of installments that allows you to obtain sum of funding.</p>
+    <a href="/PersonalLoan" class="btn btn-primary">Apply Loan</a>
+  </div>
+</div>
+  </div>
+  <div class="col">
+<div class="card text-center mb-3" style="width: 18rem;">
+  <img src="{% static './images/student.png' %}" class="card-img-top" >
+  <div class="card-body">
+    <b class="card-title">Student Loan</b>
+    <p class="card-text">A Student loan is being given to finance higher education-related expenses. Education loans are intended to cover the fees, supplies, and living expenses during process of degree.</p>
+    <a href="/StudentLoan" class="btn btn-primary">Apply Loan</a>
+  </div>
+</div>
+  </div>
+  <div class="col">
+<div class="card text-center mb-3" style="width: 18rem;">
+  <img src="data:image/jpeg;base64,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" class="card-img-top" >
+  <div class="card-body">
+    <b class="card-title">Business Loan</b>
+    <p class="card-text">Business loans are given for businesses to finance or expand their operations and obtained from banks, credit unions and may require collateral guarantee from the business owner.</p>
+    <a href="/BusinessLoan" class="btn btn-primary">Apply Loan</a>
+  </div>
+</div>
+  </div>
+  <div class="col">
+<div class="card text-center mb-3" style="width: 18rem;">
+  <img src="https://www.finnable.com/wp-content/uploads/2022/01/Instant-car-loan.jpg" class="card-img-top" >
+  <div class="card-body">
+    <b class="card-title">Vehicle Loan</b>
+    <p class="card-text">A Vehicle Loan is a loan that allows you to purchase two and four wheelers for personal use. Typically,we lend money while the buyer must repay the loan in EMIs over a specific interest rate.</p>
+    <a href="/VehicleLoan" class="btn btn-primary">Apply Loan</a>
+  </div>
+</div>
+  </div>
+  <div class="col">
+<div class="card text-center mb-3" style="width: 18rem;">
+  <img src="https://d28wu8o6itv89t.cloudfront.net/images/AgriculturalLoancompressedjpg-1591696527432.jpeg" class="card-img-top" >
+  <div class="card-body">
+    <b class="card-title">Agriculture  Loan</b>
+    <p class="card-text">Agricultural loans are availed by a farmer to fund seasonal agricultural operations or related activities like animal farming, pisci-culture or purchase of land or agricultural tools.</p>
+    <a href="/AgricultureLoan" class="btn btn-primary">Apply Loan</a>
+  </div>
+</div>
+  </div>
+  <div class="col">
+    <div class="card text-center mb-3" style="width: 18rem;">
+    <img src="https://thumbs.dreamstime.com/b/gold-loan-concept-depiction-jewelry-plastic-blocks-217999517.jpg" class="card-img-top">
+      <div class="card-body">
+      <b class="card-title">Gold Loan</b>
+      <p class="card-text">Gold loan is a type of secured loan where gold is being pledged as collateral, and it's an easy way to access funds for meeting financial needs. Loan amount is 80% of current market value.</p>
+      <a href="/GoldLoan" class="btn btn-primary">Apply Loan</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer style="background-color: #333333;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h4 style="color: white;">Contact Us</h4>
+        <p style="color: white;"><i class="fa fa-map-marker"></i>Team 69, CSE-H, KL University.</p>
+        <p style="color: white;"><i class="fa fa-phone"></i> 9490804533</p>
+        <p style="color: white;"><i class="fa fa-envelope"></i>2100032087@kluniversity.in</p>
+      </div>
+      <div class="col-md-4">
+        <h4 style="color: white;">Quick Links</h4>
+        <ul>
+          <li><a href="/" style="color: white;">Home</a></li>
+          <li><a href="/Loans" style="color: white;">Loans</a></li>
+          <li><a href="/Refinance" style="color: white;">Refinance</a></li>
+          <li><a href="/AboutUs" style="color: white;">About Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4 style="color: white;">Follow Us</h4>
+        <ul class="social">
+          <li><a href="https://www.instagram.com/shannu_xoxo_/" style="color: white;"><i class="bi bi-instagram"></i>Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/shanmukh-anaparthi/" style="color: white;"><i class="bi bi-linkedin"></i>LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="text-center" style="color: white;">&copy; 2023 MPB System. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
